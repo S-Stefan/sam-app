@@ -13,6 +13,6 @@ phases:
     commands:
       - echo build started at `date` for environment dev
       - sam build -t template.yaml
-      - sam package --s3-bucket codepipeline-eu-west-1-164630341625 --template-file template.yaml --output-template-file svrtest-package.yaml --debug
+      - sam package --s3-bucket codepipeline-eu-west-1-164630341625 --template-file template.yaml --debug
       - echo "deploying"
       #- sam deploy --template-file packaged.yaml --region eu-west-1 --capabilities CAPABILITY_IAM --stack-name sam-devops-deploy
