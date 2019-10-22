@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions: 
+      python: 3.7
+    comands:
+      - echo "this is a test to see how far this goes."
+      - pip install --upgrade pip
+      - pip install aws-sam-cli
+
+  build:
+    commands:
+      - echo build started at `date` for environment dev
+      - sam package --output-template packaged.yaml --s3-bucket sam-devops-deploy
+      - echo "deploying"
+      - sam deploy --template-file packaged.yaml --region eu-west-1 --capabilities CAPABILITY_IAM --stack-name sam-devops-deploy
