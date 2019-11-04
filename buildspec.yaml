@@ -13,6 +13,12 @@ phases:
     commands:
       - echo build started at `date` for environment dev
       - sam build -t template.yaml
-      - sam package --s3-bucket codepipeline-eu-west-1-164630341625 --kms-key-id $KMS_KEY_ID --template-file template.yaml --output-template-file BuildArti/svr-test-package.yaml --debug
+      - sam package --s3-bucket codepipeline-eu-west-1-164630341625 --kms-key-id $KMS_KEY_ID --template-file template.yaml --output-template-file svr-test-package.yaml --debug
       - echo "deploying"
       #- sam deploy --template-file svrtest-package.yaml --region eu-west-1 --capabilities CAPABILITY_IAM --stack-name sam-devops-deploy
+
+artifacts:
+  files:
+    - 'svr-test/BuildArti'
+  name: svr-test-package.yaml-$(date +%Y-%m-%d)
+  discard-paths: yes
