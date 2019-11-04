@@ -19,6 +19,6 @@ phases:
 
 artifacts:
   files:
-    - 'svr-test/BuildArti'
+    - 'svr-test/BuildArti/*'
   name: svr-test-package.yaml-$(date +%Y-%m-%d)
   discard-paths: yes
